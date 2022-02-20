@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React from 'react';
 import Input from './Input';
 
@@ -372,16 +372,16 @@ class Form extends React.Component {
   }
 }
 
-Form.propTypes = {
-  nameProject: PropTypes.string.isRequired,
-  varn1: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  varn2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  varN2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
-  isCalcButtonDisabled: PropTypes.bool.isRequired,
-  onCalcButtonClick: PropTypes.func.isRequired,
-};
+// Form.propTypes = {
+//   nameProject: PropTypes.string.isRequired,
+//   varn1: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+//   varn2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+//   varN2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+//   onInputChange: PropTypes.func.isRequired,
+//   isSaveButtonDisabled: PropTypes.bool.isRequired,
+//   onSaveButtonClick: PropTypes.func.isRequired,
+//   isCalcButtonDisabled: PropTypes.bool.isRequired,
+//   onCalcButtonClick: PropTypes.func.isRequired,
+// };
 
 export default Form;

@@ -11,6 +11,7 @@ class Metric extends React.Component {
     dre,
     risco,
     onDeleteButtonClick,
+    onAlterButtonClick,
     } = this.props;
 
     return (
@@ -44,6 +45,14 @@ class Metric extends React.Component {
         >
           Excluir
         </button>
+
+        <button
+          type="submit"
+          data-testid="alter-button"
+          onClick={ () => onAlterButtonClick(nameProject) }
+        >
+          Alterar
+        </button>
       </div>
     );
   }
@@ -57,10 +66,12 @@ Metric.propTypes = {
   dre: PropTypes.number.isRequired,
   risco: PropTypes.number.isRequired,
   onDeleteButtonClick: PropTypes.func,
+  onAlterButtonClick: PropTypes.func,
 };
 
 Metric.defaultProps = {
-onDeleteButtonClick: () => {},
+  onDeleteButtonClick: () => {},
+  onAlterButtonClick: () => {},
 };
 
 export default Metric;

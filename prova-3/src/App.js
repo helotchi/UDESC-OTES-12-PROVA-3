@@ -43,6 +43,22 @@ class App extends React.Component {
     }, this.handleSaveButtonDisable);
   }
 
+  handleMetricDeleteButtonClick = (nameProject) => {
+    const { metrics } = this.state;
+    const newMetrics = metrics.filter((metric) => metric.nameProject !== nameProject);
+    
+    deleteDate('metrics', newMetrics);
+    this.setState({ metrics: [...newMetrics]})
+  }
+
+  handleProcesDeleteButtonClick = (nameProject) => {
+    const { process } = this.state;
+    const newProcess = process.filter((proces) => proces.nameProject !== nameProject);
+    
+    deleteDate('process', newProcess);
+    this.setState({ process: [...newProcess]})
+  }
+
   handleSaveButtonDisable = () => {
     const {
       nameProject,
@@ -170,7 +186,7 @@ class App extends React.Component {
       varP: '',
       varC: '',
       isCalcButtonDisabled: false,
-    });
+    }, this.handleMetricDeleteButtonClick(nameProject));
   }
 
   handleSaveButtonClick = () => {
@@ -207,23 +223,7 @@ class App extends React.Component {
       engine2: '1',
       engine3: '1',
       isSaveButtonDisabled: true,
-    });
-  }
-  
-  handleMetricDeleteButtonClick = (nameProject) => {
-    const { metrics } = this.state;
-    const newMetrics = metrics.filter((metric) => metric.nameProject !== nameProject);
-    
-    deleteDate('metrics', newMetrics);
-    this.setState({ metrics: [...newMetrics]})
-  }
-
-  handleProcesDeleteButtonClick = (nameProject) => {
-    const { process } = this.state;
-    const newProcess = process.filter((proces) => proces.nameProject !== nameProject);
-    
-    deleteDate('process', newProcess);
-    this.setState({ process: [...newProcess]})
+    }, this.handleProcesDeleteButtonClick(nameProject));
   }
 
   generateMetrics = () => {
@@ -239,12 +239,29 @@ class App extends React.Component {
             <Metric 
               { ...metric }
               onDeleteButtonClick = { this.handleMetricDeleteButtonClick }
+              onAlterButtonClick = { this.handleMetricAlterButtonClick }
             />
           </li>
         );
       })
     }
     return generateResult;
+  }
+
+  handleProcesAlterButtonClick = (nameProject) => {
+    const objectProces = getDates('process')
+      .find((proces) => proces.nameProject === nameProject);
+
+    console.log(objectProces);
+
+    <Form 
+      { ...objectProces }
+      onInputChange={ this.handleInputChange }
+      onCalcButtonClick={ this.handleCalcButtonClick }
+      onSaveButtonClick={ this.handleSaveButtonClick }
+    />
+
+    
   }
 
   generateProcess = () => {
@@ -258,6 +275,7 @@ class App extends React.Component {
             <Process 
               { ...proces }
               onDeleteButtonClick = { this.handleProcesDeleteButtonClick }
+              onAlterButtonClick = { this.handleProcesAlterButtonClick }
             />
           </li>
         );
